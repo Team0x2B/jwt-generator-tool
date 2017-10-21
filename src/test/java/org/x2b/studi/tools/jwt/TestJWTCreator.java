@@ -25,10 +25,10 @@ public class TestJWTCreator {
         claims.put("issuer", "test-issuer");
 
         JWTCreator creator = new JWTCreator();
-        String token = creator.createJwt(claims, key);
+        String token = creator.createJwt(claims, key.getBytes());
 
 
-        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(key))
+        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(key.getBytes()))
                 .withIssuer("test-issuer")
                 .build();
 
@@ -41,7 +41,7 @@ public class TestJWTCreator {
     public void testCreateJwtBadIssuer() throws UnsupportedEncodingException {
         Map<String, String> claims = new HashMap<>();
 
-        String key = "secret";
+        byte[] key = "secret".getBytes();
 
         claims.put("uuid", "abcd-efgh-ijklm");
         claims.put("issuer", "bad-issuer");
@@ -63,8 +63,8 @@ public class TestJWTCreator {
     public void testCreateJctBadSignature() throws UnsupportedEncodingException {
         Map<String, String> claims = new HashMap<>();
 
-        String signingKey = "imahacker";
-        String expectedKey = "secret";
+        byte[] signingKey = "imahacker".getBytes();
+        byte[] expectedKey = "secret".getBytes();
 
         claims.put("uuid", "abcd-efgh-ijklm");
         claims.put("issuer", "test-issuer");

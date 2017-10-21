@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class JWTCreator {
 
-    public String createJwt(Map<String, String> claims, String secret) throws UnsupportedEncodingException {
+    public String createJwt(Map<String, String> claims, byte[] secret) throws UnsupportedEncodingException {
         return createJwt(claims, secret, null, null, null);
     }
 
-    public String createJwt(Map<String, String> claims, String secret, Date iat, Date nbf, Date exp) throws UnsupportedEncodingException {
+    public String createJwt(Map<String, String> claims, byte[] secret, Date iat, Date nbf, Date exp) throws UnsupportedEncodingException {
         com.auth0.jwt.JWTCreator.Builder jwtBuilder = JWT.create()
                 .withIssuer(claims.get("issuer"));
 

@@ -1,5 +1,6 @@
 package org.x2b.studi.tools.jwt;
 
+import java.util.Base64;
 import java.util.HashMap;
 
 public class Token {
@@ -8,8 +9,8 @@ public class Token {
 
     private HashMap<String, String> claims;
 
-    public String getSecret() {
-        return secret;
+    public byte[] getSecret() {
+        return Base64.getDecoder().decode(secret);
     }
 
     public HashMap<String, String> getClaims() {
