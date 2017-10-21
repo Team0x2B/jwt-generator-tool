@@ -7,7 +7,6 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.junit.Assert;
 import org.junit.Test;
-import org.x2b.studi.tools.jwt.JWTCreator;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
